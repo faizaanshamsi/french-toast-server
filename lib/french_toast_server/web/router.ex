@@ -5,7 +5,9 @@ defmodule FrenchToastServer.Web.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", FrenchToastServer.Web do
+  scope "/v1", FrenchToastServer.Web do
     pipe_through :api
+
+    resources "/statuses", StatusController, only: [:index, :show]
   end
 end
