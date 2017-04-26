@@ -4,11 +4,11 @@ defmodule FrenchToastServer.DataTest do
   alias FrenchToastServer.Data
   alias FrenchToastServer.Data.Level
 
-  @create_attrs %{color: "some color", description: "some description", name: "some name"}
-  @update_attrs %{color: "some updated color", description: "some updated description", name: "some updated name"}
-  @invalid_attrs %{color: nil, description: nil, name: nil}
+  @create_level_attrs %{color: "some color", description: "some description", name: "some name"}
+  @update_level_attrs %{color: "some updated color", description: "some updated description", name: "some updated name"}
+  @invalid_level_attrs %{color: nil, description: nil, name: nil}
 
-  def fixture(:level, attrs \\ @create_attrs) do
+  def fixture(:level, attrs \\ @create_level_attrs) do
     {:ok, level} = Data.create_level(attrs)
     level
   end
@@ -24,19 +24,19 @@ defmodule FrenchToastServer.DataTest do
   end
 
   test "create_level/1 with valid data creates a level" do
-    assert {:ok, %Level{} = level} = Data.create_level(@create_attrs)
+    assert {:ok, %Level{} = level} = Data.create_level(@create_level_attrs)
     assert level.color == "some color"
     assert level.description == "some description"
     assert level.name == "some name"
   end
 
   test "create_level/1 with invalid data returns error changeset" do
-    assert {:error, %Ecto.Changeset{}} = Data.create_level(@invalid_attrs)
+    assert {:error, %Ecto.Changeset{}} = Data.create_level(@invalid_level_attrs)
   end
 
   test "update_level/2 with valid data updates the level" do
     level = fixture(:level)
-    assert {:ok, level} = Data.update_level(level, @update_attrs)
+    assert {:ok, level} = Data.update_level(level, @update_level_attrs)
     assert %Level{} = level
     assert level.color == "some updated color"
     assert level.description == "some updated description"
@@ -45,7 +45,7 @@ defmodule FrenchToastServer.DataTest do
 
   test "update_level/2 with invalid data returns error changeset" do
     level = fixture(:level)
-    assert {:error, %Ecto.Changeset{}} = Data.update_level(level, @invalid_attrs)
+    assert {:error, %Ecto.Changeset{}} = Data.update_level(level, @invalid_level_attrs)
     assert level == Data.get_level!(level.id)
   end
 
