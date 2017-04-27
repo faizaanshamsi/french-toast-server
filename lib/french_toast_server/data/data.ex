@@ -140,6 +140,23 @@ defmodule FrenchToastServer.Data do
   def get_status!(id), do: Repo.get!(Status, id) |> Repo.preload([:data_level])
 
   @doc """
+  Gets the current (most recently created) status with preloaded level.
+
+  ## Examples
+
+      iex> get_current_status
+      %Status{}
+
+  """
+  def get_current_status do
+    Status
+      |> order_by(desc: :inserted_at)
+      |> limit(1)
+      |> preload(:data_level)
+      |> Repo.one
+  end
+
+  @doc """
   Creates a status.
 
   ## Examples
