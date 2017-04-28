@@ -221,9 +221,9 @@ defmodule FrenchToastServer.Data do
     status_changeset(status, %{})
   end
 
-  defp status_changeset(%Status{} = status, attrs) do
+  defp status_changeset(%Status{} = status, attrs \\ :empty) do
     status
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:data_level_id])
+    |> cast_assoc(:data_level, with: &level_changeset/2)
   end
 end
