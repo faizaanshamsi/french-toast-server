@@ -31,11 +31,13 @@ defmodule FrenchToastServer.Mixfile do
     [
      {:cowboy, "~> 1.0"},
      {:gettext, "~> 0.11"},
+     {:httpotion, "~> 3.0.2"},
      {:phoenix, "~> 1.3.0-rc"},
      {:phoenix_alexa, git: "https://github.com/rbeene/phoenix_alexa.git"},
      {:phoenix_ecto, "~> 3.2"},
      {:phoenix_pubsub, "~> 1.0"},
      {:postgrex, ">= 0.0.0"},
+     {:sweet_xml, "~> 0.6.5"}
     ]
   end
 

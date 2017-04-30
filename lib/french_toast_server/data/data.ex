@@ -38,6 +38,19 @@ defmodule FrenchToastServer.Data do
   def get_level!(id), do: Repo.get!(Level, id)
 
   @doc """
+  Gets a single level by name.
+
+  ## Examples
+
+      iex> get_level_by_name("low")
+      %Level{}
+
+  """
+  def get_level_by_name(name) do
+    Repo.one(from l in Level, where: l.name == ^name)
+  end
+
+  @doc """
   Creates a level.
 
   ## Examples
