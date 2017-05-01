@@ -9,6 +9,7 @@ defmodule FrenchToastServer.Web.Router do
     pipe_through :api
 
     resources "/statuses", StatusController, only: [:index, :show]
+    get "/current-status", CurrentStatusController, :show
   end
 
   scope "/alexa", FrenchToastServer.Web do
