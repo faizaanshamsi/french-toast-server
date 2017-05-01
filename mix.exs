@@ -29,6 +29,7 @@ defmodule FrenchToastServer.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+     {:cors_plug, "~> 1.2"},
      {:cowboy, "~> 1.0"},
      {:gettext, "~> 0.11"},
      {:httpotion, "~> 3.0.2"},
